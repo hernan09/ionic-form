@@ -1,0 +1,65 @@
+<ion-app>
+  <ion-header>
+    <ion-toolbar color="tertiary">
+      
+      <ion-searchbar color="dark"></ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
+  
+    <ion-content >
+        <div id="conte">
+      <br>
+      <form id="form" >
+        <ion-item class="item">
+          <ion-label text-center position="floating"><ion-icon name="person"></ion-icon> Insert your user</ion-label>
+          <ion-input [(ngModel)]="name" [ngModelOptions]="{standalone: true}" spellcheck=true type="text" clearInput maxlength=6></ion-input>
+        </ion-item>
+        <br>
+        <ion-item class="item">
+           <ion-label text-center position="floating"><ion-icon name="code"></ion-icon> Insert your pasword</ion-label>
+           <ion-input [(ngModel)]="pass" type="text" [ngModelOptions]="{standalone: true}"clearInput></ion-input>
+          
+        </ion-item>
+         <br>
+         <ion-button expand="full" (click)="submit()" color="tertiary">Send<ion-icon name="send"></ion-icon></ion-button>
+      </form>
+         
+          
+              
+           
+    </div>
+    </ion-content>
+    <ion-footer>
+       <ion-toolbar>
+          <ion-tabs >
+              <ion-tab-bar color="tertiary" slot="bottom">
+                <ion-tab-button tab="schedule">
+                  <ion-icon name="calendar"></ion-icon>
+                  <ion-label>user</ion-label>
+                  
+                </ion-tab-button>
+            
+                <ion-tab-button tab="speakers">
+                    <ion-icon name="person"></ion-icon>
+                  <ion-label>Speakers</ion-label>
+                </ion-tab-button>
+            
+                <ion-tab-button tab="map">
+                  <ion-icon name="map"></ion-icon>
+                  <ion-label>Map</ion-label>
+                </ion-tab-button>
+            
+                <ion-tab-button tab="about">
+                  <ion-icon name="information-circle"></ion-icon>
+                  <ion-label>About</ion-label>
+                </ion-tab-button>
+              </ion-tab-bar>
+            </ion-tabs>
+         
+
+       </ion-toolbar>
+    </ion-footer>
+  
+</ion-app>
+
+
