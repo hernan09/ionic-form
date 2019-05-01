@@ -8,7 +8,10 @@
     
    
 }
-
+#h33{
+    color: black;
+    background-color: black;
+}
 #form{
     width: 70%;
     margin: auto;
@@ -19,7 +22,11 @@
     margin: auto;
     margin-top: 10%;
 }
-
+#items>ion-button:hover{
+ transform: scale(1.1);
+ --background:red;
+ transition: all ease 1s;
+}
 #form>ion-item{
  color:white;
 }

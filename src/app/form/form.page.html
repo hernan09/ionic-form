@@ -1,6 +1,6 @@
 <ion-app>
   <ion-header>
-    <ion-toolbar color="tertiary">
+    <ion-toolbar color="primary">
       
       <ion-searchbar color="dark"></ion-searchbar>
     </ion-toolbar>
@@ -21,18 +21,24 @@
           
         </ion-item>
          <br>
-         <ion-button expand="full" (click)="submit()" color="tertiary">Send<ion-icon name="send"></ion-icon></ion-button>
+         <ion-button expand="full"(click)="sendPostRequest()" color="light">Send<ion-icon name="send"></ion-icon></ion-button>
       </form>
-         
-          
-              
-           
+     
     </div>
+    <ion-list>
+      <ion-item id="items" *ngFor="let usuario of usuarios">
+        <ion-avatar slot="start">
+          <img src={{usuario.img}} alt="">
+        </ion-avatar>
+        <p>{{usuario.name}}</p>
+        <ion-button slot="end" color="success">Success <ion-icon name="send"></ion-icon></ion-button>
+      </ion-item>
+    </ion-list>
     </ion-content>
     <ion-footer>
        <ion-toolbar>
           <ion-tabs >
-              <ion-tab-bar color="tertiary" slot="bottom">
+              <ion-tab-bar color="primary" slot="bottom">
                 <ion-tab-button tab="schedule">
                   <ion-icon name="calendar"></ion-icon>
                   <ion-label>user</ion-label>
