@@ -18,21 +18,27 @@
         <ion-item class="item">
            <ion-label text-center position="floating"> Insert your pasword</ion-label>
            <ion-input [(ngModel)]="pass" type="text" [ngModelOptions]="{standalone: true}"clearInput></ion-input>
-          
+
         </ion-item>
          <br>
          <ion-button expand="full"(click)="sendPostRequest()" color="light">Send<ion-icon name="send"></ion-icon></ion-button>
       </form>
      
     </div>
-    <ion-list>
-      <ion-item id="items" *ngFor="let usuario of usuarios">
+    <ion-list inset="true" lines="inset">
+      <ion-item-sliding  *ngFor="let usuario of usuarios; let i=index">
+        <ion-item-options side="start">
+          <ion-item-option color="danger" (click)="delete(i)"><ion-icon name="trash"></ion-icon>Delete</ion-item-option>
+        </ion-item-options>
+     
+      <ion-item color="light" id="items">
         <ion-avatar slot="start">
           <img src={{usuario.img}} alt="">
         </ion-avatar>
         <p>{{usuario.name}}</p>
-        <ion-button slot="end" color="success">Success <ion-icon name="send"></ion-icon></ion-button>
+        <ion-button slot="end" color="light">Success <ion-icon name="send"></ion-icon></ion-button>
       </ion-item>
+      </ion-item-sliding>
     </ion-list>
     </ion-content>
     <ion-footer>
