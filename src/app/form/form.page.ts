@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, AlertController, ActionSheetController } from '@ionic/angular';
 import {  HttpClient } from '@angular/common/http';
 import { JsonPipe } from '@angular/common';
 import { error } from '@angular/compiler/src/util';
@@ -12,28 +12,74 @@ import { error } from '@angular/compiler/src/util';
   styleUrls: ['./form.page.scss'],
 })
 export class FormPage implements OnInit {
-  usuarios:{};
+  usuarios:any;
   name:string;
   img:string;
+  acep:Boolean=false
   
-    constructor(public route:Router,public loading:LoadingController,private http:HttpClient) { }
+    constructor(public route:Router,public actionshep:ActionSheetController,public loading:LoadingController,private http:HttpClient) { }
 
    getView(){
      this.http.get('http://localhost:4000/view').subscribe(data=>{
-     //this.usuarios es un objeto si l oasigno como array no me deja igualarlo a la data
-     //asi como esta me lo mapea el html pero no como un array
+   
       this.usuarios=data
+  console.log(this.usuarios)
+      
      },error=>{
        console.error(error);
        
      })
    }
+   async alert(){
+    const actionSheet = await this.actionshep.create({
+      header: 'Albums',
+      buttons: [{
+        text: 'Delete',
+        role: 'destructive',
+        icon: 'trash',
+        handler: () => {
+          console.log('Delete clicked');
+        }
+      }, {
+        text: 'Share',
+        icon: 'share',
+        handler: () => {
+          console.log('Share clicked');
+        }
+      }, {
+        text: 'Play (open modal)',
+        icon: 'arrow-dropright-circle',
+        handler: () => {
+          console.log('Play clicked');
+        }
+      }, {
+        text: 'Favorite',
+        icon: 'heart',
+        handler: () => {
+          console.log('Favorite clicked');
+        }
+      }, {
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
+  }
+   
+change(){
+
+  this.acep=!this.acep
+  setTimeout(()=>this.acep=!this.acep,3000)
+  
+}
  delete(i:number){
-   this.http.delete('http://localhost:4000/delete').subscribe(data=>{
+   this.http.delete(`http://localhost:4000/delete`).subscribe(data=>{
      console.log("deleted")
-      let a= document.createElement('a')
-       a.href="/form"
-       a.click()
+     this.usuarios.splice(i,1);
    })
  }
 

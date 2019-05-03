@@ -8,6 +8,11 @@
     
    
 }
+.car{
+    width: 100%;
+    height: 200px;
+}
+
 #h33{
     color: black;
     background-color: black;
@@ -30,11 +35,9 @@
     --background:transparent;
    
 }
-ion-label>ion-icon{
-    font-size: 2rem;
-}
-ion-input:focus{
-    --highlight-color-focused:#7044ff;
+
+ion-input>ion-icon{
+    font-size: 1.4rem;
 }
 
 
