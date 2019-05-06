@@ -15,21 +15,24 @@ export class FormPage implements OnInit {
   usuarios:any;
   name:string;
   img:string;
-  acep:Boolean=false
+  acep:Boolean=false;
+  monedas:any;
   
     constructor(public route:Router,public actionshep:ActionSheetController,public loading:LoadingController,private http:HttpClient) { }
 
    getView(){
-     this.http.get('http://localhost:4000/view').subscribe(data=>{
+     this.http.get(`https://api.gael.cl/general/public/clima`).subscribe(data=>{
    
-      this.usuarios=data
-  console.log(this.usuarios)
+      this.monedas=data
+ 
       
      },error=>{
        console.error(error);
        
      })
    }
+
+   
    async alert(){
     const actionSheet = await this.actionshep.create({
       header: 'Albums',
@@ -111,6 +114,7 @@ change(){
     
     ngOnInit() {
     this.getView()
+   
     }
   
   }

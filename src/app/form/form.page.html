@@ -14,7 +14,10 @@
   
      
         <div id="conte">
-            <ion-button (click)="change()" expand="block" color="dark">Dark</ion-button>
+            <ion-button id="dang" [disabled]="acep" (click)="change()" expand="full" color="danger">Dark
+
+              <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+            </ion-button>
       <br>
       <form id="form">
         <ion-item class="item">
@@ -33,17 +36,19 @@
      
     </div>
     <ion-list inset="true" lines="inset">
-      <ion-item-sliding  *ngFor="let usuario of usuarios; let i=index">
+      <ion-item-sliding  *ngFor="let moneda of monedas; let i=index">
         <ion-item-options side="start">
           <ion-item-option color="danger" (click)="delete(i)"><ion-icon name="trash"></ion-icon>Delete</ion-item-option>
         </ion-item-options>
      
       <ion-item color="light" id="items">
         <ion-avatar slot="start">
-          <img src={{usuario.img}} alt="">
+          <img src="{{moneda.Icono}}" alt="">
         </ion-avatar>
-        <p>{{usuario.name}}</p>
-        <ion-button slot="end"  color="success">Success <ion-icon name="send"></ion-icon></ion-button>
+        <p>{{moneda.Estacion}}</p>
+        <ion-button slot="end"  color="success">Success 
+            <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+        <ion-icon name="send"></ion-icon></ion-button>
       </ion-item>
       </ion-item-sliding>
     </ion-list>

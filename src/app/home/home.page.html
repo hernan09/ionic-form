@@ -1,16 +1,27 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-    <h1>{{usuario}}</h1>
-    <h2>{{pasword}}</h2>
+  <div id="conte" class="ion-padding">
+    <div id="header">
+       <h1>CliMaX</h1>
+        <p>In The World</p>
+    </div>
+    <div class="container-fluid" id="cont">
+        <ion-list>
+            <ion-item >
+                <ion-label>Estaciones</ion-label>
+                <ion-select [(ngModel)]="opcionEstacion">
+                    <ion-select-option value="{{estacion.Estado}}" *ngFor="let estacion of estaciones">{{estacion.Estacion}}</ion-select-option>
+                   
+                </ion-select>
+               
+            </ion-item>
+          </ion-list>
+          <ion-button type="submit" (click)="sendOption( opcionEstacion )" [disabled]="!opcionEstacion" color="primary" expand="full">Enviar
+              <ion-ripple-effect></ion-ripple-effect>
+          </ion-button>
+    </div>
+    
   </div>
 </ion-content>
+

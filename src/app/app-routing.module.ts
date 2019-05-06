@@ -5,6 +5,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'form', pathMatch: 'full' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   { path: 'form', loadChildren: './form/form.module#FormPageModule' },
+  { path: 'time', loadChildren: './time/time.module#TimePageModule' },
 ];
 
 @NgModule({
