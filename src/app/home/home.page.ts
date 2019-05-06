@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, NavController } from '@ionic/angular';
 
 
 @Component({
@@ -10,27 +10,24 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
- estaciones:any;
- hora:string;
- temp:string;
- humedad:string;
- estado:string;
- codigo:string
+ cartas:any;
 
-  constructor(public roter:ActivatedRoute , public http:HttpClient,public loadingController: LoadingController,public router:Router){}
+
+
+  constructor(public roter:ActivatedRoute , public http:HttpClient,public loadingController: LoadingController,public router:Router,navctrl:NavController){}
 
   getest(){
 
-  this.http.get(`https://api.gael.cl/general/public/clima`).subscribe(resp=>{
+  this.http.get(`http://localhost:4000/view`).subscribe(resp=>{
 
-    this.estaciones=resp
-    console.log(this.estaciones)
+    this.cartas=resp
+    console.log(this.cartas)
   })
  }
-  async sendOption( estacion ){
+  async sendOption( carta ){
     const loading = await this.loadingController.create({
       message: 'Wait please....',
-      duration: 2000,
+      duration: 1000,
       cssClass: 'custom-class custom-loading'
     });
     await loading.present();
@@ -38,9 +35,12 @@ export class HomePage {
     const { role, data } = await loading.onDidDismiss();
 
     console.log('Loading dismissed!');
-     console.log(estacion)
+     //console.log(carta.img)
+     //console.log(carta.name)
+     //console.log(carta.url)
 
-     this.router.navigate(['/time',{"estacion":estacion}])
+     this.router.navigate(['/time',{"carta":carta}])
+     
   }
   ngOnInit() {
     this.getest()

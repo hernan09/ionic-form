@@ -1,14 +1,26 @@
 <ion-header>
-  <ion-toolbar>
-      <ion-back-button
+  <ion-toolbar color="tertiary">
+      <ion-back-button color="light"
       defaultHref="home"
           [text]="buttonText"
           [icon]="buttonIcon">
       </ion-back-button>
-    <ion-title>time</ion-title>
+    <ion-title>Hero Of War</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-card>
+    <ion-card-header>
+       <img src="{{img}}" alt="">
+      <ion-card-subtitle></ion-card-subtitle>
+      <ion-card-title></ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <h1>{{estado2}}</h1>
+      Keep close to Nature's heart... and break clear away, once in awhile,
+      and climb a mountain or spend a week in the woods. Wash your spirit clean.
+    </ion-card-content>
+  </ion-card>
 </ion-content>

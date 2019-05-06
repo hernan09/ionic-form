@@ -3,18 +3,17 @@
 <ion-content>
   <div id="conte" class="ion-padding">
     <div id="header">
-       <h1>CliMaX</h1>
+       <h1><strong>C</strong>liMaS</h1>
         <p>In The World</p>
     </div>
     <div class="container-fluid" id="cont">
         <ion-list>
-            <ion-item >
-                <ion-label>Estaciones</ion-label>
+            <ion-item>
+                <ion-label>Hero Of War</ion-label>
                 <ion-select [(ngModel)]="opcionEstacion">
-                    <ion-select-option value="{{estacion.Estado}}" *ngFor="let estacion of estaciones">{{estacion.Estacion}}</ion-select-option>
+                    <ion-select-option value="{{carta.img}}"*ngFor="let carta of cartas;">{{carta.name}}</ion-select-option>
                    
                 </ion-select>
-               
             </ion-item>
           </ion-list>
           <ion-button type="submit" (click)="sendOption( opcionEstacion )" [disabled]="!opcionEstacion" color="primary" expand="full">Enviar

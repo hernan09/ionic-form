@@ -8,12 +8,16 @@ import { strict } from 'assert';
   styleUrls: ['./time.page.scss'],
 })
 export class TimePage implements OnInit {
-  @Input() temp:String;
+  //@Input() temp:String;
+  img:string
   constructor(public roter:ActivatedRoute) { }
 
   ngOnInit() {
     this.roter.params.subscribe(params=>{
-      console.log(params['estacion'])
+      
+       this.img=(params['carta'])
+        console.log(this.img)
+       
     })
   }
 
