@@ -1,5 +1,5 @@
 import { Component, OnInit ,Input} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { strict } from 'assert';
 
 @Component({
@@ -9,16 +9,15 @@ import { strict } from 'assert';
 })
 export class TimePage implements OnInit {
   //@Input() temp:String;
-  img:string
-  constructor(public roter:ActivatedRoute) { }
+  carta:object
+  constructor(public route: ActivatedRoute, private router: Router) { 
+    this.route.queryParams.subscribe(params => {
+      this.carta = JSON.parse(params.carta);
+    })
+  }
 
   ngOnInit() {
-    this.roter.params.subscribe(params=>{
-      
-       this.img=(params['carta'])
-        console.log(this.img)
-       
-    })
+    //
   }
 
 }

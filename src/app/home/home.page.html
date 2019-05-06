@@ -10,13 +10,12 @@
         <ion-list>
             <ion-item>
                 <ion-label>Hero Of War</ion-label>
-                <ion-select [(ngModel)]="opcionEstacion">
-                    <ion-select-option value="{{carta.img}}"*ngFor="let carta of cartas;">{{carta.name}}</ion-select-option>
-                   
+                <ion-select [(ngModel)]="idCarta">
+                    <ion-select-option value="{{carta._id}}" *ngFor="let carta of cartas;">{{carta.name}}</ion-select-option>
                 </ion-select>
             </ion-item>
           </ion-list>
-          <ion-button type="submit" (click)="sendOption( opcionEstacion )" [disabled]="!opcionEstacion" color="primary" expand="full">Enviar
+          <ion-button type="submit" (click)="sendOption()" [disabled]="!idCarta" color="primary" expand="full">Enviar
               <ion-ripple-effect></ion-ripple-effect>
           </ion-button>
     </div>

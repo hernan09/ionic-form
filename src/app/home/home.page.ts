@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { LoadingController, NavController } from '@ionic/angular';
 
@@ -11,7 +11,7 @@ import { LoadingController, NavController } from '@ionic/angular';
 })
 export class HomePage {
  cartas:any;
-
+ idCarta:any
 
 
   constructor(public roter:ActivatedRoute , public http:HttpClient,public loadingController: LoadingController,public router:Router,navctrl:NavController){}
@@ -24,7 +24,8 @@ export class HomePage {
     console.log(this.cartas)
   })
  }
-  async sendOption( carta ){
+  async sendOption() {
+    const carta = this.cartas.find(carta => carta._id === this.idCarta);
     const loading = await this.loadingController.create({
       message: 'Wait please....',
       duration: 1000,
@@ -33,14 +34,12 @@ export class HomePage {
     await loading.present();
 
     const { role, data } = await loading.onDidDismiss();
-
-    console.log('Loading dismissed!');
-     //console.log(carta.img)
-     //console.log(carta.name)
-     //console.log(carta.url)
-
-     this.router.navigate(['/time',{"carta":carta}])
-     
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        carta: JSON.stringify(carta)
+      }
+    };
+    this.router.navigate(['/time'], navigationExtras);
   }
   ngOnInit() {
     this.getest()
